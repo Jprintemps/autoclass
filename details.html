@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPremium - Vente de Voitures d'Occasion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ======== BARRE DE NAVIGATION ======== -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+                AutoPremium
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#listings">Annonces</a></li>
+                    <li><a href="#listings?favorites=true">Favoris (<span id="favorites-count">0</span>)</a></li>
+                </ul>
+            </nav>
+            <div class="nav-tools">
+                <button class="theme-switcher" id="theme-switcher" aria-label="Changer de thème">
+                    <svg id="moon-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM12 19a7 7 0 110-14 7 7 0 010 14z"/></svg>
+                    <svg id="sun-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9a3 3 0 100 6 3 3 0 000-6zm0-2a5 5 0 110 10 5 5 0 010-10zM12 2v2m0 16v2m-9-9H1m18 0h-2m-6.36-6.36L3.64 5.64m14.72 14.72l-1.99-1.99M3.64 18.36l1.99-1.99m14.72-14.72L18.36 3.64"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======== CONTENEUR DES VUES (PAGES) ======== -->
+    <main id="app-router">
+        <!-- VUE ACCUEIL -->
+        <section id="home-view" class="view">
+            <div class="hero">
+                <h1>Trouvez la voiture de vos rêves</h1>
+                <p>Des milliers de voitures d'occasion vérifiées et garanties.</p>
+            </div>
+            <div class="container" style="padding-top: 4rem;">
+                
+                <section id="car-of-the-day-section" class="home-section"></section>
+
+                <section class="home-section">
+                    <h2 class="section-title">Recherche par Image</h2>
+                    <div class="image-search-box">
+                        <p>Vous avez vu une voiture qui vous plaît ? Uploadez sa photo et laissez notre IA la retrouver pour vous !</p>
+                        <input type="file" id="image-upload-input" accept="image/*" style="display: none;">
+                        <button id="image-upload-btn" class="btn">Uploader une image</button>
+                        <div id="image-preview-container"></div>
+                        <div class="loader" id="image-search-loader"></div>
+                        <p id="image-search-result"></p>
+                    </div>
+                </section>
+                
+                <section class="home-section">
+                    <h2 class="section-title">Nos Nouveautés</h2>
+                    <div class="car-grid" id="featured-grid"></div>
+                </section>
+            </div>
+        </section>
+
+        <!-- VUE ANNONCES -->
+        <section id="listings-view" class="view">
+            <div class="container listings-page-container">
+                <aside class="filters">
+                    <h3>Filtres</h3>
+                    <form id="filter-form">
+                         <div class="filter-group"><label for="search-input">Recherche par nom</label><input type="text" id="search-input" placeholder="Model 3, A4..."></div>
+                        <div class="filter-group"><label for="make-filter">Marque</label><select id="make-filter"></select></div>
+                        <div class="filter-group"><label for="min-price-filter">Prix Min</label><input type="number" id="min-price-filter" placeholder="5000"></div>
+                        <div class="filter-group"><label for="max-price-filter">Prix Max</label><input type="number" id="max-price-filter" placeholder="50000"></div>
+                        <div class="filter-group"><label for="min-year-filter">Année Min</label><input type="number" id="min-year-filter" placeholder="2020"></div>
+                    </form>
+                </aside>
+                <div class="results">
+                    <h2 id="listings-title" class="section-title">Nos Annonces</h2>
+                    <div id="sorting-options">
+                        <select id="sort-by">
+                            <option value="default">Trier par défaut</option>
+                            <option value="price-asc">Prix: Croissant</option>
+                            <option value="price-desc">Prix: Décroissant</option>
+                            <option value="year-desc">Plus récentes</option>
+                            <option value="year-asc">Plus anciennes</option>
+                        </select>
+                    </div>
+                    <div class="car-grid" id="listings-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VUE DÉTAILS -->
+        <section id="details-view" class="view">
+             <div class="container">
+                <div class="details-container">
+                    <div class="image-gallery">
+                        <div class="main-image"><img id="main-car-image" alt="Image principale"></div>
+                        <div class="thumbnails" id="thumbnails-container"></div>
+                    </div>
+                    <div class="car-main-info">
+                         <div class="car-info">
+                            <h1 id="car-title"></h1>
+                            <p class="price" id="car-price"></p>
+                            <p id="car-description"></p>
+                            <div class="spec-sheet">
+                                <ul id="spec-sheet-list"></ul>
+                            </div>
+                        </div>
+                        <div class="gemini-features">
+                            <h3>Assistant IA ✨</h3>
+                             <button id="generate-description-btn" class="gemini-button">
+                                Ré-écrire la description
+                            </button>
+                            <div class="loader" id="description-loader"></div>
+                           
+                            <div class="gemini-feature-section">
+                                <h4>Tableau Comparatif IA</h4>
+                                <input type="text" id="comparison-input" placeholder="Ex: Volkswagen Golf">
+                                <button id="compare-btn" class="gemini-button">Comparer</button>
+                                <div class="loader" id="comparison-loader"></div>
+                                <div class="gemini-output" id="comparison-output"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======== PIED DE PAGE ======== -->
+    <footer class="footer">
+        <p>&copy; 2025 AutoPremium. Tous droits réservés.</p>
+    </footer>
+    
+    <!-- MODAL DE VISUALISATION D'IMAGE -->
+    <div class="image-modal" id="image-modal">
+        <button class="modal-close">&times;</button>
+        <button class="modal-nav modal-prev">&#10094;</button>
+        <img id="modal-image" src="" alt="Image agrandie">
+        <button class="modal-nav modal-next">&#10095;</button>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
