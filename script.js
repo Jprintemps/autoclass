@@ -35,7 +35,7 @@
             },
             
             async callGeminiAPI(prompt, isJson = false, retries = 3, delay = 1000) {
-                const apiKey = ""; 
+                const apiKey = "AIzaSyCQ_FzPsoDakD13QBnMgEtoPrnV2nbEjIA"; 
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
                 
                 const payload = { contents: [{ parts: [{ text: prompt }] }] };
