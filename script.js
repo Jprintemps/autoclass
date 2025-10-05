@@ -1,19 +1,3 @@
- // --- DONNÉES DES VÉHICULES ---
-        const carsDB = [
-            { id: 1, make: "Tesla", model: "Model 3", year: 2022, price: 45000, mileage: 15000, fuelType: "Électrique", transmission: "Automatique", color: "Blanc", description: "Une berline électrique performante avec une autonomie impressionnante.", featured: true, images: ["src/img/37.png", "src/img/38.png"], status: "available" },
-            { id: 2, make: "BMW", model: "Série 3", year: 2021, price: 40000, mileage: 25000, fuelType: "Essence", transmission: "Automatique", color: "Noir", description: "L'équilibre parfait entre luxe, sportivité et confort.", featured: true, images: ["src/img/39.png"], status: "available" },
-            { id: 3, make: "Audi", model: "A4", year: 2020, price: 35000, mileage: 30000, fuelType: "Diesel", transmission: "Automatique", color: "Gris", description: "Élégance, technologie et finition irréprochable.", featured: true, images: ["src/img/40.png"], status: "available" },
-            { id: 4, make: "Peugeot", model: "208", year: 2023, price: 22000, mileage: 5000, fuelType: "Essence", transmission: "Manuelle", color: "Jaune", description: "Design audacieux et plaisir de conduite.", featured: true, images: ["src/img/41.png"], status: "available" },
-            { id: 5, make: "Mercedes-Benz", model: "Classe C", year: 2022, price: 52000, mileage: 12000, fuelType: "Hybride", transmission: "Automatique", color: "Argent", description: "Le summum du luxe et de l'innovation dans une berline compacte.", featured: false, images: ["src/img/42.png"], status: "available" },
-            { id: 6, make: "Renault", model: "Clio V", year: 2021, price: 18000, mileage: 35000, fuelType: "Essence", transmission: "Manuelle", color: "Bleu", description: "La citadine polyvalente par excellence, moderne et économique.", featured: false, images: ["src/img/43.png"], status: "sold" },
-            { id: 7, make: "Volkswagen", model: "Golf 8", year: 2022, price: 27000, mileage: 18000, fuelType: "Essence", transmission: "Automatique", color: "Rouge", description: "Polyvalence et technologie au service du conducteur.", featured: false, images: ["src/img/44.png"], status: "available" },
-            { id: 8, make: "Toyota", model: "Corolla", year: 2021, price: 23000, mileage: 22000, fuelType: "Hybride", transmission: "Automatique", color: "Blanc", description: "Fiabilité légendaire et faible consommation.", featured: false, images: ["src/img/45.png"], status: "available" },
-            { id: 9, make: "Citroën", model: "C3", year: 2020, price: 16000, mileage: 40000, fuelType: "Essence", transmission: "Manuelle", color: "Vert", description: "Citadine confortable et originale.", featured: false, images: ["src/img/46.png"], status: "available" },
-            { id: 10, make: "Ford", model: "Focus", year: 2019, price: 15500, mileage: 50000, fuelType: "Diesel", transmission: "Manuelle", color: "Gris", description: "Une compacte dynamique et spacieuse.", featured: false, images: ["src/img/47.png"], status: "available" },
-            { id: 11, make: "Opel", model: "Corsa", year: 2022, price: 17000, mileage: 12000, fuelType: "Essence", transmission: "Manuelle", color: "Bleu", description: "Pratique et moderne, idéale pour la ville.", featured: false, images: ["src/img/48.png"], status: "available" },
-            { id: 12, make: "Fiat", model: "500", year: 2021, price: 14000, mileage: 25000, fuelType: "Essence", transmission: "Automatique", color: "Rose", description: "Icône urbaine au style inimitable.", featured: false, images: ["src/img/49.png"], status: "available" },
-            { id: 13, make: "Dacia", model: "Sandero", year: 2023, price: 13000, mileage: 8000, fuelType: "Essence", transmission: "Manuelle", color: "Blanc", description: "Le meilleur rapport qualité/prix du marché.", featured: false, images: ["src/img/50.jpg"], status: "available" }
-        ];
 
     // --- LOGIQUE DE L'APPLICATION ---
         const App = {
